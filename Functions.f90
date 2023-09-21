@@ -56,7 +56,7 @@ module Functions
             do i=1,size(Indices)
                 do j=i,size(Indices)
                     !Find the index that should be at i position
-                    !Careful to exclude the case index at i already cprrect
+                    !Careful to exclude the case index at i already correct
                     if((j.ne.Indices(j)).and.(Indices(j).eq.i))then
                         !Swap it with the wrong index and count as 1 swap
                         !Repeat until all indices are in place
