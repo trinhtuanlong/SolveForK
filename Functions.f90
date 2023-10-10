@@ -72,4 +72,16 @@ module Functions
 
         end function LeviCivita
 
+        function modNoZero(i,j)result(m)
+
+            integer :: i,j,m
+
+            m=mod(i,j)
+            
+            if(m.eq.0)then
+                m=j
+            endif
+
+        end function modNoZero
+
 end module Functions

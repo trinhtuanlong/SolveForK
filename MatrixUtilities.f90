@@ -17,6 +17,37 @@ module MatrixUtilities
 
     contains
 
+        subroutine ResizeMatrix(z,i,n)
+
+            !Matrix to resize
+            real,dimension(:,:),allocatable :: z
+
+            !Temporary matrix
+            real,dimension(:,:),allocatable :: tmp
+
+            !Index of dimension to resize
+            integer :: i
+
+            !Target size
+            integer :: n
+
+            !Only run if input matrix is allocated
+            if(allocated(z))then
+                call move_alloc(z,tmp)
+                if(i.eq.1)then
+                    allocate(z(n,size(tmp,2)))
+                else if(i.eq.2)then
+                    allocate(z(size(tmp,1),n))
+                endif
+                do j=1,size(z,1)
+                    do k=1,size(z,2)
+                        z(j,k)=tmp(j,k)
+                    enddo
+                enddo
+            endif
+
+        end subroutine ResizeMatrix
+
         function IdentityMatrix(pSize)result(I)
             
             integer :: pSize
