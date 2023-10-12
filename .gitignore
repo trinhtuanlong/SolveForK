@@ -31,5 +31,5 @@
 *.out
 *.app
 
-# Hidden files
-.*
+# Vim swap files
+.swp
